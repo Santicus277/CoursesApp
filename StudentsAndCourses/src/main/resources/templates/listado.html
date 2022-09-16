@@ -1,0 +1,68 @@
+<!DOCTYPE HTML>
+<html xmlns:th="https://www.thymeleaf.org">
+
+
+<head>
+
+<title>Lista de Estudiantes</title>
+
+<link rel="stylesheet"
+	href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css"
+	integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l"
+	crossorigin="anonymous" />
+
+<link
+	href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.css"
+	rel="stylesheet" type="text/css" />
+</head>
+
+<body>
+
+	<div class="container">
+
+		<h3>Lista de Estudiantes</h3>
+
+		<hr />
+		<a th:href="@{/demo/alumnos}" class="btn btn-primary"><i
+			class="fa fa-user"> Añadir Estudiante</i></a> <a
+			th:href="@{/demo/cursos}" class="btn btn-primary"><i
+			class="fa fa-book"> Crear curso</i></a> <br />
+		<br />
+		<table class="table table-bordered table-striped">
+
+			<thead>
+				<tr>
+					<th>Name</th>
+					<th>Email</th>
+					<th>Curso</th>
+					<th>Horas</th>
+					<th>Acción</th>
+
+				</tr>
+			</thead>
+			<tbody>
+				<tr th:each="estudiante : ${miLista}">
+					<td th:text="${estudiante.name}" />
+					<td th:text="${estudiante.email}" />
+					<td th:text="${estudiante.miCurso.nombreCurso}" />
+					<td th:text="${estudiante.miCurso.horas}" />
+
+					<td><a th:href="@{/demo/edit(id=${estudiante.id})}"
+						class="btn btn-info"><i class="fa fa-pen"></i> Actualizar</a> <a
+						th:href="@{/demo/del(id=${estudiante.id})}"
+						class="btn btn-danger ml-2"> <i class="fa fa-trash"></i></a></td>
+				</tr>
+			</tbody>
+
+		</table>
+
+
+		<table class="table table-bordered table-striped">
+
+		</table>
+	</div>
+
+
+</body>
+
+</html>

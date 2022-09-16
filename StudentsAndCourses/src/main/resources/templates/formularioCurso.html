@@ -1,0 +1,53 @@
+<!DOCTYPE HTML>
+<html xmlns:th="https://www.thymeleaf.org">
+<head>
+<title>Crear curso</title>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<link rel="stylesheet"
+	href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css"
+	integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l"
+	crossorigin="anonymous" />
+</head>
+<body>
+	<form th:action="@{/demo/addCurso}" th:object="${miLista}"
+		method="post">
+		<div class="container">
+			<legend>Datos del curso</legend>
+		</div>
+		<div class="container">
+			<div class="form-row">
+				<div class="form-group col-md-5">
+					<label for="inputEmail4">Nombre del curso</label> <input
+						class="form-control" placeholder="Nombre del curso" type="text"
+						th:field="*{nombreCurso}">
+				</div>
+				<div class="form-group col-md-5">
+					<label for="email">Horas</label> <input type="number"
+						class="form-control" placeholder="Horas de duración"
+						th:field="*{horas}">
+				</div>
+			</div>
+			<table class="table table-bordered table-striped">
+
+				<thead>
+					<tr>
+						<th>Curso</th>
+						<th>Horas</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr th:each="estudiante : ${miListaCurso}">
+
+						<td th:text="${estudiante.nombreCurso}" />
+						<td th:text="${estudiante.horas}" />
+
+					</tr>
+				</tbody>
+
+			</table>
+		</div>
+		<div class="container">
+			<button type="submit" class="btn btn-primary">Crear curso</button>
+		</div>
+	</form>
+</body>
